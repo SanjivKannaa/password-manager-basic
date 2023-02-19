@@ -27,11 +27,12 @@ def get_pass():
     what = input('website: ')
     c.execute('SELECT * FROM manager')
     # use 50 space for each column
+    print(' '*21 + 'Username' + ' '*22 + ' '*22 + 'Password' + ' '*21 + ' '*23 + 'Website' + ' '*21)
+    print('_'*(155))
+    print('\n\n')
     for i in c.fetchall():
         if what in i[2]:
             request_status = True
-            print(' '*21 + 'Username' + ' '*22 + ' '*22 + 'Password' + ' '*21 + ' '*23 + 'Website' + ' '*21)
-            print('\n\n')
             print(' '*(25-len(i[0])//2) + i[0] + ' '*(25-len(i[0])//2) + ' '*(25-len(i[1])//2)  + i[1] + ' '*(25-len(i[1])//2) + ' '*(25-len(i[2])//2) + i[2] + ' '*(25-len(i[2])//2))
             print('\n\n\n')
     if request_status == False:
@@ -50,7 +51,7 @@ def update():
     account = input('change password for which website? ')
     password = input('Enter the new password : ')
     q = "UPDATE manager SET password=\'" + password + "\' where website=\'" + account + "\'"
-    print(q)
+    print("PASSWORD UPDATED SUCCESSFULLY")
     c.execute(q)
 
 count = 0
