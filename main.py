@@ -10,7 +10,8 @@ try:
     query = 'CREATE TABLE manager(username VARCHAR(15), password VARCHAR(20), website VARCHAR(10))'
     c.execute(query)
 except:
-    pass	
+    pass
+
 
 
 def new_pass():
@@ -23,11 +24,11 @@ def new_pass():
 
 def get_pass():
     request_status = False
-    what = input('website')
+    what = input('website: ')
     c.execute('SELECT * FROM manager')
     # use 50 space for each column
     for i in c.fetchall():
-        if i[2] == what:
+        if what in i[2]:
             request_status = True
             print(' '*21 + 'Username' + ' '*22 + ' '*22 + 'Password' + ' '*21 + ' '*23 + 'Website' + ' '*21)
             print('\n\n')
@@ -46,7 +47,7 @@ def view_all_pass():
     print('\n\n\n')
 
 def update():
-    account = input('change password for which website?')
+    account = input('change password for which website? ')
     password = input('Enter the new password : ')
     q = "UPDATE manager SET password=\'" + password + "\' where website=\'" + account + "\'"
     print(q)
